@@ -1,0 +1,21 @@
+
+/*Esse trecho é o rodapé (renderiza no css)*/
+.footer{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  @extend %no-margin-top, %no-margin-bottom,%auto-margin-right,%auto-margin-left;
+  &__logo{
+    max-width: 100px;
+  }
+  &__txt{
+      @include fontSize(14px);
+      color: gray;
+  
+    }
+  
+
+}
+
+
+

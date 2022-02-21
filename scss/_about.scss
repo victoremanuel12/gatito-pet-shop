@@ -1,0 +1,91 @@
+ // PÁGINA ABOUT
+ .about{
+  @include for-phone-only{
+    width: 100%;
+
+  }
+  @include for-tablet-only{
+    width: 80%;
+
+  }
+  @include for-desktop-only{
+    width: 80%;
+    margin: 0 auto 40px;
+  }
+  font-family: Arial, Helvetica, sans-serif;
+   &__title{
+     background-color: $light-gray;
+     border-radius: 10px 10px 0 0 ;
+     text-align: center;
+     padding: 20px;
+   }
+   &__h1{
+    @include fontSize(22px);
+     color: $dark-gray;
+     letter-spacing: 1px;
+     margin: 5px 0 10px 0 ;
+
+   }
+   .breadcrumb{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     &__link{
+       @include fontSize(14px);
+       color: $dark-gray;
+       text-decoration: none;
+        &:hover{
+         text-decoration: underline;
+         color: purple;
+       }
+     }
+     &__img{
+       width: 15px;
+      
+       @extend %no-margin-top, %no-margin-bottom,%default-margin-right,%default-margin-left;
+     }
+   }
+   &__img{
+     width: 100%;
+     margin-bottom: 20px;
+     @extend  %default-margin-bottom;
+    border-radius: 0 0 10px 10px;
+   }
+   &__intro{
+     font-weight: 100;
+     color: $dark-gray;
+     width: 70%;
+     margin: 30px auto ;
+     text-align: center;
+     @include fontSize(18px);
+     
+   }
+  
+   &__split{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     @include for-phone-only{
+      width: 100%;
+      margin-bottom: 20px;
+    }
+   }
+   &__img-description{
+     width: 50%;
+     @extend %no-margin-top, %no-margin-bottom,%double-margin-right,%double-margin-left;
+   }
+   &__txt{
+     width: calc(100% - #{$img-width});
+   }
+   &__p{
+    @extend  %default-margin-bottom;
+     @include fontSize(14px);
+     color: $dark-gray;
+
+     
+   }
+
+   
+}
+

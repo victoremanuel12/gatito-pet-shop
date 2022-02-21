@@ -1,0 +1,252 @@
+/// essas variáveis sao as cores principais (tres barras para comentarios de documentação )
+$purple:#A050BE;
+$light-gray:#eaeaeb;
+$dark-gray:#464646;
+$yellow:#FABE50;
+
+
+/// essas variáveis sao as medidas principais (tres barras para comentarios de documentação )
+$img-width:45%;
+// Reset dos Links
+%no-decoration{text-decoration: none;}
+%yes-decoration{text-decoration: underline;}
+
+// Reset ddas Listas
+@mixin reset {
+  margin: 0;
+  padding: 0; 
+  list-style: none; 
+}
+// Midia query com mix
+@mixin  for-phone-only {
+  @media (max-width:767.98px){ @content;}
+  
+}
+@mixin for-tablet-only{
+  @media (min-width:768px) and (max-width:1199.98px) { @content;}
+}
+@mixin for-desktop-only{
+  @media (min-width:1200px) { @content;}
+}
+
+// caracteristica padrão do display flex
+@mixin flex($property, $jty-cnt){
+  display: flex;
+  #{$property}:$jty-cnt;
+
+} 
+// função para tranformar PX em REM
+@function calculateRem($size){
+  @return $size / 16px * 1rem;
+}
+@mixin fontSize($size){
+  font-size: $size;
+}
+
+@import 'header','footer','article','about','collection','contact';
+
+$directions:top,bottom,left,right;
+$layout-margin-size:10px;
+$layout-margin-auto:auto;
+
+@each $direction in $directions {
+  %no-margin-#{$direction} {margin-#{$direction}:0;}
+  %default-margin-#{$direction} {margin-#{$direction}:$layout-margin-size;}
+  %double-margin-#{$direction} {margin-#{$direction}:$layout-margin-size * 2;}
+  %half-margin-#{$direction} {margin-#{$direction}:$layout-margin-size / 2;}
+  %auto-margin-#{$direction} {margin-#{$direction}:$layout-margin-auto;}
+
+  
+
+
+
+  
+}
+  
+.main{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: Arial, Helvetica, sans-serif;
+
+  &__content{
+    @include for-phone-only{
+      width: 100%;
+
+    }
+    width: 70%;
+    padding: 40px 8px;
+    
+  }
+  &__post{
+    text-align: center;
+    max-width: 800px;
+    @extend %default-margin-top,%auto-margin-right,%auto-margin-left;
+    
+  }
+  &__title{
+    text-decoration: none;
+    @include fontSize(22px);
+    color: $dark-gray;
+    letter-spacing: 1.5;
+    &:hover{
+      color: $purple;
+    }
+  }
+  &__subtitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @extend %default-margin-top, %double-margin-bottom;
+   
+
+  }
+  &__date{
+    @extend %default-margin-right, %default-margin-left;
+
+
+    @include fontSize(12px);
+    font-style: italic;
+  }
+  &__tag{
+    @include fontSize(14px);
+    padding: 5px 7px;
+    color: $purple;
+    border: 1px solid $purple;
+    
+    @extend %no-margin-top, %no-margin-bottom;
+
+  }
+  &__details{
+    border: 1px solid $light-gray;
+  }
+  &__img{
+    width: 100%;
+   
+  }
+  &__description{
+    padding: 40px 0 25px;
+    max-width: 650px;
+    margin: 0 auto;
+    @extend %no-margin-top, %no-margin-bottom,%auto-margin-right,%auto-margin-left;
+
+    @include fontSize(14px);
+    
+  }
+  &__btn{
+    text-decoration: none;
+    @include fontSize(16px);
+    letter-spacing: 1.5;
+    color: $purple;
+    background-color:$yellow;
+    padding: 10px 20px;
+    transition: .3s;
+    &:hover{
+      color: $yellow;
+      background-color: $purple;
+    }
+  }
+  &__info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid $light-gray;
+    @extend %double-margin-top;
+
+    
+  }
+  &__autor{
+    width: 50%;
+    border-radius: 1px solid $light-gray;
+  }
+  &__p{
+    color: $dark-gray;
+    font-size: 14px;
+    margin: 10px 0 ;
+    @extend %no-margin-right, %no-margin-left,%default-margin-top,%default-margin-bottom;
+
+  }
+  &__coments{
+    width: 50%;
+  }
+  &__a{
+    text-decoration: none;
+    @include fontSize(14px);
+    color: $dark-gray;
+    @extend %no-margin-right, %no-margin-left,%default-margin-top,%default-margin-bottom;
+
+    &:hover{
+      color: $purple;
+    }
+  }
+  &__sidebar{
+    @include for-phone-only{
+      width: 80%;
+      margin-bottom: 20px;
+
+      
+
+    }
+    @include for-tablet-only{
+      width: 50%;
+
+    }
+    @include for-desktop-only{
+      width: 25%;
+      padding: 40px 10px;
+    }
+  }
+  .sidebar{
+    &__top{
+      border: 1px solid $dark-gray;
+      padding: 15px 20px;
+
+    }
+    &__title{
+      background-color: $yellow; 
+      padding: 10px 20px;
+      text-align: center;
+    @extend %no-margin-right, %no-margin-left,%no-margin-top,%no-margin-bottom;
+
+      letter-spacing: 1.5px;
+    }
+    &__posts{
+     @include reset;
+      
+    }
+    &__list{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 15px 0;
+      &:not(:last-child){
+        border-bottom: 1px dashed $light-gray;
+      }
+    } 
+    &__img{
+      width:40% ;
+      margin-right: 10px;
+      @extend %default-margin-right;
+      border-radius: 5px;
+    }
+    &__details{
+      width:40%;
+    }
+    &__post-title{
+      @include fontSize(14px);
+      color: $purple;
+      @extend %no-decoration;
+
+      &:hover{
+        @extend %yes-decoration
+      }
+    }
+    &__post-date{
+      @include fontSize(14px);
+      @extend %default-margin-top,%default-margin-bottom;
+    }
+  }
+  
+
+}
